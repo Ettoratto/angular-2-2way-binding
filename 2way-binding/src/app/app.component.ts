@@ -25,8 +25,8 @@ export class AppComponent {
 
   people: Person[] = [
 
-   /*  {name: "frango", surname:"frengo", age:"18"},
-    {name: "pluto", surname:"pippo", age:"44"} */
+   /*  {name: "frango", surname:"frengo", age:8},
+    {name: "pluto", surname:"pippo", age:4} */
   ]
   
 
@@ -41,17 +41,23 @@ export class AppComponent {
     this.title = this.title1;
   }
 
-  unlockButton(){
+  changeButtonState(){
 
-    if(this.person.name != "")
-      if(this.person.surname != "")
-        if(this.person.age != "")
+    if(this.person.name != "" && this.person.surname != "" && this.person.age != "")
           this.buttonDisabled = false
+    else
+      this.buttonDisabled = true
+
+
   }
 
   addPerson(){
     
     this.people.push(this.person)
+    this.person.name = ""
+    this.person.surname = ""
+    this.person.age = ""
+    this.changeButtonState()
   }
 
   editPerson(){
