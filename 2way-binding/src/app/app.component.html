@@ -1,5 +1,19 @@
 <h1> Hello {{title}}</h1>
 <p>num click {{num}}</p>
-<button (click)="clickButton()" [disabled]="buttonDisabled">clicca</button>
-<br>
-<input type="text" [(ngModel)]="title1" (keydown)="changeTitle()">
+<button (click)="clickButton()">clicca</button>
+<br><br>
+<input type="text" [(ngModel)]="title1" (keyup)="changeTitle()" placeholder="inserisci un titolo per la pagina" width="auto">
+<hr>
+    <input required type="text" (keyup)="unlockButton()" [(ngModel)]="person.name" placeholder="name">
+    <input required type="text" (keyup)="unlockButton()" [(ngModel)]="person.surname" placeholder="surname">
+    <input required type="number" (keyup)="unlockButton()" [(ngModel)]="person.age" placeholder="age">
+    <button (click)="addPerson()" [disabled]="buttonDisabled">aggiungi</button>
+    
+<div *ngFor="let person of people.reverse()">
+    <p>{{person.name}}</p>
+    <p>{{person.surname}}</p>
+    <p>{{person.age}}</p>
+    <button (click)="editPerson()">modifica</button>
+    <button (click)="deletePerson()">elimina</button>
+    <hr>
+</div>
