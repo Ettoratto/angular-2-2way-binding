@@ -1,3 +1,5 @@
 <h1> Hello {{title}}</h1>
 <p>num click {{num}}</p>
 <button (click)="clickButton()" [disabled]="buttonDisabled">clicca</button>
+<br>
+<input type="text" [(ngModel)]="title1" (keydown)="changeTitle()">
