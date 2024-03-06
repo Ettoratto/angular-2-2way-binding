@@ -4,11 +4,11 @@ export class Person {
     surname: string
     age: string
 
-    constructor() {
+    constructor(name:string, surname:string, age:string) {
 
-        this.name = ""
-        this.surname = ""
-        this.age = "" 
+        this.name = name
+        this.surname = surname
+        this.age = age
     }
 }
 

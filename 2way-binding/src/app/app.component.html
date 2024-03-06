@@ -2,17 +2,17 @@
 <p>num click {{num}}</p>
 <button (click)="clickButton()">clicca</button>
 <br><br>
-<input type="text" [(ngModel)]="title1" (keyup)="changeTitle()" placeholder="inserisci un titolo per la pagina" width="auto">
+<input type="text" [(ngModel)]="title1" (keyup)="changeTitle()" placeholder="inserisci un titolo per la pagina" width="auto" style="padding: 2px">
 <hr>
-    <input required type="text" (keyup)="changeButtonState()" [(ngModel)]="person.name" placeholder="name">
-    <input required type="text" (keyup)="changeButtonState()" [(ngModel)]="person.surname" placeholder="surname">
-    <input required type="number" (keyup)="changeButtonState()" [(ngModel)]="person.age" placeholder="age">
+    <input required type="text" (keyup)="changeButtonState()" [(ngModel)]="name" placeholder="name">
+    <input required type="text" (keyup)="changeButtonState()" [(ngModel)]="surname" placeholder="surname">
+    <input required type="number" (keyup)="changeButtonState()" [(ngModel)]="age" placeholder="age">
     <button (click)="addPerson()" [disabled]="buttonDisabled">aggiungi</button>
 
-<div *ngFor="let person of people.reverse()">
-    <p>{{person.name}}</p>
-    <p>{{person.surname}}</p>
-    <p>{{person.age}}</p>
+<div *ngFor="let p of people">
+    <p>Nome: {{p.name}}</p>
+    <p>Cognome: {{p.surname}}</p>
+    <p>Età: {{p.age}}</p>
     <button (click)="editPerson()">modifica</button>
     <button (click)="deletePerson()">elimina</button>
     <hr>

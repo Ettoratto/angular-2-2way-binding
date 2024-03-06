@@ -16,11 +16,9 @@ export class AppComponent {
   title = 'unclepear'
   num = 0
   buttonDisabled: boolean = true
-
-  person2: Person = {
-
-    name:"gigu", surname: "kriks", age:"12"
-  }
+  name = ""
+  surname = ""
+  age = ""
   person: Person = new Person()
 
   people: Person[] = [
@@ -43,7 +41,7 @@ export class AppComponent {
 
   changeButtonState(){
 
-    if(this.person.name != "" && this.person.surname != "" && this.person.age != "")
+    if(this.name != "" && this.surname != "" && this.age != "")
           this.buttonDisabled = false
     else
       this.buttonDisabled = true
@@ -52,16 +50,21 @@ export class AppComponent {
   }
 
   addPerson(){
-    
+
+    this.person = new Person(this.name, this.surname, this.age)
+
     this.people.push(this.person)
-    this.person.name = ""
-    this.person.surname = ""
-    this.person.age = ""
+    
+    console.log(this.people)
+    this.name = ""
+    this.surname = ""
+    this.age = ""
     this.changeButtonState()
   }
 
   editPerson(){
 
+    
   }
 
   deletePerson(){
