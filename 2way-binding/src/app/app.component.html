@@ -8,12 +8,14 @@
     <input required type="text" (keyup)="changeButtonState()" [(ngModel)]="surname" placeholder="surname">
     <input required type="number" (keyup)="changeButtonState()" [(ngModel)]="age" placeholder="age">
     <button (click)="addPerson()" [disabled]="buttonDisabled">aggiungi</button>
+    <button (click)="saveEditedPerson()">Save</button>
+    <button (click)="cancelEdit()">Cancel</button>
 
 <div *ngFor="let p of people">
     <p>Nome: {{p.name}}</p>
     <p>Cognome: {{p.surname}}</p>
     <p>Età: {{p.age}}</p>
-    <button (click)="editPerson()">modifica</button>
-    <button (click)="deletePerson()">elimina</button>
+    <button (click)="editPerson(p)">modifica</button>
+    <button (click)="deletePerson(p)">elimina</button>
     <hr>
 </div>

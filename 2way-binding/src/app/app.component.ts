@@ -19,7 +19,11 @@ export class AppComponent {
   name = ""
   surname = ""
   age = ""
-  person: Person = new Person()
+  person: Person | null = null;
+  editingPerson: Person | null = null;
+  isEditing: boolean = false;
+
+  buttonHidden: boolean = true
 
   people: Person[] = [
 
@@ -56,21 +60,50 @@ export class AppComponent {
     this.people.push(this.person)
     
     console.log(this.people)
-    this.name = ""
-    this.surname = ""
-    this.age = ""
+    this.clearFields()
     this.changeButtonState()
   }
 
-  editPerson(){
+  editPerson(person: Person) {
+    this.buttonHidden = false
 
-    
+    this.editingPerson = person
+    this.name = person.name
+    this.surname = person.surname
+    this.age = person.age
+    this.isEditing = true
   }
 
-  deletePerson(){
-
-
+  saveEditedPerson() {
+    if (this.editingPerson) {
+      this.editingPerson.name = this.name
+      this.editingPerson.surname = this.surname
+      this.editingPerson.age = this.age
+      console.log('Edited person:', this.editingPerson)
+      this.clearFields()
+      this.isEditing = false
+    }
   }
 
+  cancelEdit() {
+    this.clearFields();
+    this.isEditing = false;
+  }
+
+  deletePerson(person: Person) {
+    const index = this.people.indexOf(person)
+    if (index !== -1) {
+      this.people.splice(index, 1) // Remove the person from the array
+      console.log('Deleted person:', person)
+    }
+  }
+
+  clearFields() {
+    this.name = "";
+    this.surname = "";
+    this.age = "";
+  }
 }
+
+
 
